@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <meta property="og:image" content=""> -->
+    <link rel="icon" href="assets/images/ikonwsweb.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Tangerine:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+    <title>Wedding Suliswanto & Kosidah | By WS Store</title>
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body>
+    <audio id="music" loop>
+      <source src="assets/music/music.mp3" />
+    </audio>
+
+    <div id="app"></div> 
+
+    <script src="controllers/invitationController.js"></script>
+    <script src="router/router.js"></script>
+    <script src="assets/js/countdown.js"></script>
+    <script src="script.js"></script>
+    <script src="assets/js/music.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000, // durasi animasi dalam ms
+        once: true, // animasi cuma jalan sekali
+      });
+    </script> 
+  </body>
+</html>
