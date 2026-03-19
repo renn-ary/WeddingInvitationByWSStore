@@ -1,24 +1,62 @@
+// window.openInvitation = async function () {
+
+//   const response = await fetch("views/countdown.html");
+//   const html = await response.text();
+
+//   document.getElementById("app").innerHTML = html;
+
+//   document.getElementById("music").play();
+
+//   initCountdown();
+
+//   // ✅ INIT AOS DULU
+//   AOS.init({
+//     duration: 1000,
+//     once: true,
+//     offset: 80
+//   });
+
+//   // ✅ WAJIB PAKAI AWAIT
+//   await loadSections();
+// };
+
+let cachedViews = {};
+
+async function preloadViews() {
+  const views = ["countdown", "couple", "event", "gift", "rsvp", "wishes", "closing"];
+
+  for (const view of views) {
+    const res = await fetch(`views/${view}.html`);
+    cachedViews[view] = await res.text();
+  }
+}
+
+// jalanin saat pertama buka web
+preloadViews();
+
+
+
 window.openInvitation = async function () {
 
-  const response = await fetch("views/countdown.html");
-  const html = await response.text();
+  // ⚡ langsung render TANPA fetch lagi
+  document.getElementById("app").innerHTML = cachedViews["countdown"];
 
-  document.getElementById("app").innerHTML = html;
-
+  // 🎵 play setelah UI muncul
   document.getElementById("music").play();
 
   initCountdown();
 
-  // ✅ INIT AOS DULU
+  // ✅ init AOS SETELAH HTML ADA
   AOS.init({
     duration: 1000,
     once: true,
     offset: 80
   });
 
-  // ✅ WAJIB PAKAI AWAIT
-  await loadSections();
+  // ⚡ load section lain di background
+  loadSections();
 };
+
 
 // async function loadSections() {
 //   const sections = ["couple", "event", "gift", "rsvp", "wishes", "closing"];
@@ -39,9 +77,7 @@ async function loadSections() {
   const sections = ["couple", "event", "gift", "rsvp", "wishes", "closing"];
 
   for (const section of sections) {
-    const res = await fetch(`views/${section}.html`);
-    const html = await res.text();
-    document.getElementById("invitation").innerHTML += html;
+    document.getElementById("invitation").innerHTML += cachedViews[section];
   }
 
   AOS.refresh();
