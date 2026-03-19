@@ -550,10 +550,10 @@ section::after {
 }
 
 .dengan {
-  margin: 20px 0;
   font-family: "Tangerine", cursive;
   font-size: 3rem;
   color: #ff7d26;
+  margin-bottom: 30px;
 }
 
 .event-cards {
