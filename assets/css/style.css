@@ -200,7 +200,7 @@ button {
   padding: 10px 20px;
   border-radius: 30px;
   font-family: "Jipatha", cursive;
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: 600;
   cursor: pointer;
   animation: buttonSwing 2s infinite;
@@ -264,7 +264,7 @@ section {
 .title {
   font-family: "Jipatha", cursive;
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 3rem;
   color: #ff7d26;
   margin-bottom: 30px;
   top: 0;
@@ -273,14 +273,14 @@ section {
 .nama-pengantin {
   font-family: "Tangerine", cursive;
   font-weight: 600;
-  font-size: 2.2rem;
+  font-size: 3rem;
   margin-bottom: 40px;
 }
 
 .section-title {
   font-family: "Jipatha", cursive;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 2rem;
   background-color: #ff7d26;
   border-radius: 10px;
   padding: 6px;
@@ -295,7 +295,7 @@ section {
 
 .countdown-date {
   font-family: "Jipatha", cursive;
-  font-size: 1.2rem;
+  font-size: 2rem;
   font-weight: 500;
   color: #ff7d26;
 }
@@ -387,14 +387,14 @@ section::after {
 .ucapan-doa {
   font-family: "Jipatha", cursive;
   font-weight: 300;
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
 .quotes {
   font-family: "Jipatha", cursive;
   font-weight: 300;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 .daun-overlay {
@@ -519,14 +519,14 @@ section::after {
 .salam {
   font-family: "Jipatha", cursive;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: #000;
 }
 
 .quotes2 {
   font-family: "Jipatha", cursive;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin-bottom: 30px;
   color: #000;
 }
@@ -541,7 +541,7 @@ section::after {
 .span {
   font-family: "Jipatha", cursive;
   font-weight: 300;
-  font-size: 0.95rem;
+  font-size: 1.5rem;
   color: #000;
 }
 
@@ -596,7 +596,7 @@ section::after {
 
 .card-content p {
   font-family: "Jipatha", cursive;
-  font-size: 0.95rem;
+  font-size: 1.5rem;
   line-height: 1.4;
   word-wrap: break-word;
 }
@@ -621,7 +621,7 @@ section::after {
 
 .gift-text {
   font-family: "Jipatha", cursive;
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
@@ -671,7 +671,7 @@ section::after {
   padding: 10px;
   border-radius: 10px;
   border: 1px solid #ccc;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-family: "Jipatha", cursive;
 }
 
@@ -738,7 +738,7 @@ section::after {
 }
 
 .rsvp-container p {
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin-bottom: 20px;
   opacity: 0.8;
   font-family: "Jipatha", cursive;
@@ -769,7 +769,7 @@ section::after {
   border-radius: 12px;
   border: 1px solid #ddd;
   outline: none;
-  font-size: 0.95rem;
+  font-size: 1.5rem;
   transition: 0.3s;
   font-family: "Jipatha", cursive;
 }
@@ -825,7 +825,7 @@ textarea {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   animation: slideIn 0.4s ease;
   font-family: "Jipatha", cursive;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 /* ANIMASI MASUK */
