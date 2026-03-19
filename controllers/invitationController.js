@@ -20,6 +20,21 @@ window.openInvitation = async function () {
   await loadSections();
 };
 
+// async function loadSections() {
+//   const sections = ["couple", "event", "gift", "rsvp", "wishes", "closing"];
+
+//   for (const section of sections) {
+//     const res = await fetch(`views/${section}.html`);
+//     const html = await res.text();
+//     document.getElementById("invitation").innerHTML += html;
+//   }
+
+//   // ⏱ kasih waktu render DOM
+//   setTimeout(() => {
+//     AOS.refreshHard(); // 🔥 lebih kuat dari refresh biasa
+//   }, 100);
+// }
+
 async function loadSections() {
   const sections = ["couple", "event", "gift", "rsvp", "wishes", "closing"];
 
@@ -29,10 +44,20 @@ async function loadSections() {
     document.getElementById("invitation").innerHTML += html;
   }
 
-  // ⏱ kasih waktu render DOM
+  AOS.refresh();
+
+  // ✅ HIDE LOADER SETELAH SEMUA SELESAI
+  hideLoader();
+}
+
+function hideLoader() {
+  const loader = document.getElementById("loader");
+
+  loader.classList.add("hide");
+
   setTimeout(() => {
-    AOS.refreshHard(); // 🔥 lebih kuat dari refresh biasa
-  }, 100);
+    loader.style.display = "none";
+  }, 600);
 }
 
 
@@ -59,3 +84,19 @@ function renderGuestName() {
     guestElement.innerText = getGuestName();
   }
 }
+
+
+
+
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+
+  setTimeout(() => {
+    loader.classList.add("hide");
+
+    setTimeout(() => {
+      loader.style.display = "none";
+    }, 600);
+  }, 800); // delay biar smooth
+});
+
