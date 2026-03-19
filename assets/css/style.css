@@ -212,7 +212,6 @@ button:hover {
   background: #c85623;
 }
 
-
 button:active {
   transform: scale(0.96);
 }
@@ -240,7 +239,7 @@ button i {
 
 section {
   position: relative;
-  padding: 50px 16px; /* ✅ sesuai request */
+  padding: 80px 16px; /* ✅ sesuai request */
   width: 100%;
   max-width: 420px; /* ✅ ukuran HP */
   margin: 0 auto;
@@ -531,18 +530,30 @@ section::after {
   color: #000;
 }
 
-.name-pengantin {
+.nama {
   font-family: "Tangerine", cursive;
-  font-weight: 600;
-  font-size: 42px;
-  margin-bottom: 40px;
+  font-size: 3rem;
+  margin-bottom: -5px; /* 🔥 jarak ke ortu = 10px */
 }
 
-.span {
+.ortu {
   font-family: "Jipatha", cursive;
-  font-weight: 300;
   font-size: 1.5rem;
-  color: #000;
+  margin-bottom: 16px; /* 🔥 jarak ke alamat = 20px */
+}
+
+.alamat {
+  font-family: "Jipatha", cursive;
+  font-size: 1.5rem;
+  color: #ff7d26;
+  margin-bottom: 20px; /* 🔥 jarak ke "dengan" = 20px */
+}
+
+.dengan {
+  margin: 20px 0;
+  font-family: "Tangerine", cursive;
+  font-size: 3rem;
+  color: #ff7d26;
 }
 
 .event-cards {
@@ -903,7 +914,7 @@ textarea {
   width: 160px;
   height: 4px;
   background: linear-gradient(to bottom, rgb(236, 165, 78), #ff7d26);
-  margin: -20px auto 30px auto;
+  margin: -20px auto 50px auto;
   border-radius: 10px;
   animation: pulseDivider 2s infinite ease-in-out;
 }
@@ -1018,7 +1029,7 @@ footer p {
 }
 
 footer .bi {
-  font-size: 12px;
+  font-size: 0.7rem;
   color: red;
 }
 
