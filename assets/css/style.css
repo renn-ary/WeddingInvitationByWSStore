@@ -27,7 +27,7 @@ body::-webkit-scrollbar {
 
 @font-face {
   font-family: "Jipatha";
-  src: url("./assets/fonts/Jipatha-Regular.ttf") format("truetype");
+  src: url("/assets/fonts/Jipatha-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -370,7 +370,7 @@ section::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("./assets/images/bgk.png") center/cover no-repeat;
+  background: url("/assets/images/bgk.png") center/cover no-repeat;
   z-index: -1;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
