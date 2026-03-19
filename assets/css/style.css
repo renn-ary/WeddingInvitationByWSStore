@@ -2,10 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
   scroll-behavior: smooth;
+  font-size: 14px;
 }
 
 body {
@@ -159,7 +161,7 @@ body::-webkit-scrollbar {
 
 h1 {
   color: #ff7d26;
-  font-size: 46px;
+  font-size: 2.6rem;
   font-weight: 700;
   z-index: 3;
   margin-bottom: 20px;
@@ -178,7 +180,7 @@ h2 {
 
 .invitation-text {
   letter-spacing: 3px;
-  font-size: 12px;
+  font-size: 0.7rem;
   z-index: 3;
   margin-bottom: -18px;
   margin-top: 220px;
@@ -186,7 +188,7 @@ h2 {
 }
 
 .yth-text {
-  font-size: 32px;
+  font-size: 1.8rem;
   font-family: "Jipatha", cursive;
 }
 /* BUTTON */
@@ -195,10 +197,10 @@ button {
   background: #ff7d26;
   color: #fff;
   border: none;
-  padding: 12px 28px;
+  padding: 10px 20px;
   border-radius: 30px;
   font-family: "Jipatha", cursive;
-  font-size: 24px;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   animation: buttonSwing 2s infinite;
@@ -208,6 +210,11 @@ button {
 
 button:hover {
   background: #c85623;
+}
+
+
+button:active {
+  transform: scale(0.96);
 }
 
 /* BUTTON ANIMATION */
@@ -228,13 +235,12 @@ button:hover {
 
 button i {
   margin-right: 8px;
-  font-size: 16px;
+  font-size: 1rem;
 }
-
 
 section {
   position: relative;
-  padding: 60px 20px; /* ✅ sesuai request */
+  padding: 50px 16px; /* ✅ sesuai request */
   width: 100%;
   max-width: 420px; /* ✅ ukuran HP */
   margin: 0 auto;
@@ -255,13 +261,10 @@ section {
   padding: 40px 20px;
 }
 
-
-
-
 .title {
   font-family: "Jipatha", cursive;
   font-weight: 600;
-  font-size: 42px;
+  font-size: 2rem;
   color: #ff7d26;
   margin-bottom: 30px;
   top: 0;
@@ -270,14 +273,14 @@ section {
 .nama-pengantin {
   font-family: "Tangerine", cursive;
   font-weight: 600;
-  font-size: 42px;
+  font-size: 2.2rem;
   margin-bottom: 40px;
 }
 
 .section-title {
   font-family: "Jipatha", cursive;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 1.1rem;
   background-color: #ff7d26;
   border-radius: 10px;
   padding: 6px;
@@ -292,7 +295,7 @@ section {
 
 .countdown-date {
   font-family: "Jipatha", cursive;
-  font-size: 28px;
+  font-size: 1.2rem;
   font-weight: 500;
   color: #ff7d26;
 }
@@ -307,8 +310,8 @@ section {
 
 .count-box {
   border: 2px solid #ff7d26;
-  width: 56px;
-  height: 56px;
+  width: 50px;
+  height: 50px;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -350,14 +353,14 @@ section {
 
 .count-box span {
   font-family: "Montserrat", sans-serif;
-  font-size: 24px;
+  font-size: 1rem;
   font-weight: 600;
   color: #ff7d26;
 }
 
 .count-box p {
   font-family: "Montserrat", sans-serif;
-  font-size: 12px;
+  font-size: 0.7rem;
   margin-top: 2px;
 }
 
@@ -384,14 +387,14 @@ section::after {
 .ucapan-doa {
   font-family: "Jipatha", cursive;
   font-weight: 300;
-  font-size: 24px;
+  font-size: 1rem;
   margin-bottom: 10px;
 }
 
 .quotes {
   font-family: "Jipatha", cursive;
   font-weight: 300;
-  font-size: 24px;
+  font-size: 1rem;
 }
 
 .daun-overlay {
@@ -516,14 +519,14 @@ section::after {
 .salam {
   font-family: "Jipatha", cursive;
   font-weight: 400;
-  font-size: 28px;
+  font-size: 1.2rem;
   color: #000;
 }
 
 .quotes2 {
   font-family: "Jipatha", cursive;
   font-weight: 400;
-  font-size: 28px;
+  font-size: 1rem;
   margin-bottom: 30px;
   color: #000;
 }
@@ -538,7 +541,7 @@ section::after {
 .span {
   font-family: "Jipatha", cursive;
   font-weight: 300;
-  font-size: 24px;
+  font-size: 0.95rem;
   color: #000;
 }
 
@@ -593,7 +596,7 @@ section::after {
 
 .card-content p {
   font-family: "Jipatha", cursive;
-  font-size: 26px;
+  font-size: 0.95rem;
   line-height: 1.4;
   word-wrap: break-word;
 }
@@ -749,7 +752,6 @@ section::after {
   border-radius: 20px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
-
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -767,7 +769,7 @@ section::after {
   border-radius: 12px;
   border: 1px solid #ddd;
   outline: none;
-  font-size: 24px;
+  font-size: 0.95rem;
   transition: 0.3s;
   font-family: "Jipatha", cursive;
 }
@@ -901,7 +903,7 @@ textarea {
   width: 160px;
   height: 4px;
   background: linear-gradient(to bottom, rgb(236, 165, 78), #ff7d26);
-  margin: -20px auto 60px auto;
+  margin: -20px auto 30px auto;
   border-radius: 10px;
   animation: pulseDivider 2s infinite ease-in-out;
 }
@@ -943,6 +945,12 @@ textarea {
 
   .count-box span {
     font-size: 28px;
+  }
+}
+
+@media (min-width: 480px) {
+  html {
+    font-size: 15px;
   }
 }
 
@@ -997,16 +1005,14 @@ textarea {
   backdrop-filter: blur(10px);
 }
 
-
 .footer-logo {
   width: 50%;
   margin-top: 20px;
   margin-bottom: -18px;
-  
 }
 
 footer p {
-  font-size: 24px;
+  font-size: 0.9rem;
   font-family: "Jipatha", cursive;
   margin-top: 10px;
 }
@@ -1019,4 +1025,3 @@ footer .bi {
 .footer-content {
   padding: 0 10px; /* kanan kiri 10px */
 }
-
