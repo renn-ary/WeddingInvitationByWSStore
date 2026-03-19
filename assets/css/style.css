@@ -519,7 +519,7 @@ section::after {
 .salam {
   font-family: "Jipatha", cursive;
   font-weight: 400;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #000;
 }
 
@@ -621,7 +621,7 @@ section::after {
 
 .gift-text {
   font-family: "Jipatha", cursive;
-  font-size: 24px;
+  font-size: 1rem;
   margin-bottom: 10px;
 }
 
@@ -671,7 +671,7 @@ section::after {
   padding: 10px;
   border-radius: 10px;
   border: 1px solid #ccc;
-  font-size: 20px;
+  font-size: 1rem;
   font-family: "Jipatha", cursive;
 }
 
@@ -738,7 +738,7 @@ section::after {
 }
 
 .rsvp-container p {
-  font-size: 24px;
+  font-size: 1rem;
   margin-bottom: 20px;
   opacity: 0.8;
   font-family: "Jipatha", cursive;
