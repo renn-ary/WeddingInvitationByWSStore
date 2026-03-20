@@ -1,9 +1,44 @@
-
-
+// ===============================
+// 🔥 CACHE HTML
+// ===============================
 let cachedViews = {};
+let isMusicPlaying = false;
+let isAutoPaused = false;
 
+// ===============================
+// 🔥 PRELOAD IMAGES
+// ===============================
+async function preloadImagesFromHTML(html) {
+  const temp = document.createElement("div");
+  temp.innerHTML = html;
+
+  const images = temp.querySelectorAll("img");
+  const promises = [];
+
+  images.forEach((img) => {
+    const src = img.getAttribute("src");
+    if (!src) return;
+
+    const image = new Image();
+    image.src = src;
+
+    promises.push(
+      new Promise((resolve) => {
+        image.onload = resolve;
+        image.onerror = resolve;
+      }),
+    );
+  });
+
+  return Promise.all(promises);
+}
+
+// ===============================
+// 🔥 PRELOAD SEMUA VIEW
+// ===============================
 async function preloadViews() {
   const views = [
+    "cover",
     "countdown",
     "couple",
     "event",
@@ -15,25 +50,45 @@ async function preloadViews() {
 
   for (const view of views) {
     const res = await fetch(`views/${view}.html`);
-    cachedViews[view] = await res.text();
+    const html = await res.text();
+
+    cachedViews[view] = html;
+
+    // 🔥 penting: preload cover & countdown dulu
+    if (view === "cover" || view === "countdown") {
+      await preloadImagesFromHTML(html);
+    }
   }
 }
 
-// jalanin saat pertama buka web
-preloadViews();
+// ===============================
+// 🔥 LOAD COVER AWAL
+// ===============================
+window.addEventListener("load", async () => {
+  await preloadViews();
 
-let isMusicPlaying = false;
-let isAutoPaused = false; // kontrol sistem
+  document.getElementById("app").innerHTML = cachedViews["cover"];
 
+  renderGuestName();
+
+  hideLoader();
+});
+
+// ===============================
+// 🔥 OPEN INVITATION
+// ===============================
 window.openInvitation = async function () {
   document.getElementById("app").innerHTML = cachedViews["countdown"];
 
   const music = document.getElementById("music");
 
   if (music && !isMusicPlaying) {
-    music.play().then(() => {
-      isMusicPlaying = true;
-    }).catch(() => {});
+    music
+      .play()
+      .then(() => {
+        isMusicPlaying = true;
+      })
+      .catch(() => {});
   }
 
   initCountdown();
@@ -41,26 +96,30 @@ window.openInvitation = async function () {
   AOS.init({
     duration: 1000,
     once: true,
-    offset: 80
+    offset: 80,
   });
 
-  loadSections();
+  loadSections(); // background
 };
 
-
+// ===============================
+// 🔥 LOAD SECTION + PRELOAD IMAGE
+// ===============================
 async function loadSections() {
   const sections = ["couple", "event", "gift", "rsvp", "wishes", "closing"];
 
   for (const section of sections) {
+    await preloadImagesFromHTML(cachedViews[section]);
+
     document.getElementById("invitation").innerHTML += cachedViews[section];
   }
 
   AOS.refresh();
-
-  // ✅ HIDE LOADER SETELAH SEMUA SELESAI
-  hideLoader();
 }
 
+// ===============================
+// 🔥 LOADER
+// ===============================
 function hideLoader() {
   const loader = document.getElementById("loader");
 
@@ -72,7 +131,7 @@ function hideLoader() {
 }
 
 // ===============================
-// 🎯 GET GUEST NAME FROM URL
+// 🎯 GET GUEST NAME
 // ===============================
 function getGuestName() {
   const params = new URLSearchParams(window.location.search);
@@ -84,7 +143,7 @@ function getGuestName() {
 }
 
 // ===============================
-// 🎯 RENDER KE HTML
+// 🎯 RENDER NAME
 // ===============================
 function renderGuestName() {
   const guestElement = document.getElementById("guestName");
@@ -94,18 +153,9 @@ function renderGuestName() {
   }
 }
 
-window.addEventListener("load", () => {
-  const loader = document.getElementById("loader");
-
-  setTimeout(() => {
-    loader.classList.add("hide");
-
-    setTimeout(() => {
-      loader.style.display = "none";
-    }, 600);
-  }, 800); // delay biar smooth
-});
-
+// ===============================
+// 🎵 AUTO STOP MUSIC (TAB)
+// ===============================
 document.addEventListener("visibilitychange", () => {
   const music = document.getElementById("music");
   if (!music) return;
@@ -121,7 +171,9 @@ document.addEventListener("visibilitychange", () => {
   }
 });
 
-
+// ===============================
+// 🎵 STOP MUSIC MANUAL
+// ===============================
 function stopMusic() {
   const music = document.getElementById("music");
   if (music) {
@@ -130,7 +182,9 @@ function stopMusic() {
   }
 }
 
-
+// ===============================
+// 🎵 STOP SAAT KLIK IFRAME
+// ===============================
 document.addEventListener("click", (e) => {
   if (e.target.tagName === "IFRAME") {
     stopMusic();
