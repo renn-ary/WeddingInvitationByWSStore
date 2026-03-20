@@ -23,7 +23,15 @@
 let cachedViews = {};
 
 async function preloadViews() {
-  const views = ["countdown", "couple", "event", "gift", "rsvp", "wishes", "closing"];
+  const views = [
+    "countdown",
+    "couple",
+    "event",
+    "gift",
+    "rsvp",
+    "wishes",
+    "closing",
+  ];
 
   for (const view of views) {
     const res = await fetch(`views/${view}.html`);
@@ -34,10 +42,7 @@ async function preloadViews() {
 // jalanin saat pertama buka web
 preloadViews();
 
-
-
 window.openInvitation = async function () {
-
   // ⚡ langsung render TANPA fetch lagi
   document.getElementById("app").innerHTML = cachedViews["countdown"];
 
@@ -50,13 +55,12 @@ window.openInvitation = async function () {
   AOS.init({
     duration: 1000,
     once: true,
-    offset: 80
+    offset: 80,
   });
 
   // ⚡ load section lain di background
   loadSections();
 };
-
 
 async function loadSections() {
   const sections = ["couple", "event", "gift", "rsvp", "wishes", "closing"];
@@ -81,8 +85,6 @@ function hideLoader() {
   }, 600);
 }
 
-
-
 // ===============================
 // 🎯 GET GUEST NAME FROM URL
 // ===============================
@@ -106,9 +108,6 @@ function renderGuestName() {
   }
 }
 
-
-
-
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
 
@@ -121,3 +120,52 @@ window.addEventListener("load", () => {
   }, 800); // delay biar smooth
 });
 
+document.addEventListener("visibilitychange", () => {
+  const music = document.getElementById("music");
+
+  if (!music) return;
+
+  if (document.hidden) {
+    // ❌ tab tidak aktif
+    music.pause();
+  } else {
+    // ✅ balik ke tab
+    music.play().catch(() => {});
+  }
+});
+
+
+let isMusicPlaying = false;
+
+window.openInvitation = async function () {
+  document.getElementById("app").innerHTML = cachedViews["countdown"];
+
+  const music = document.getElementById("music");
+
+  if (music && !isMusicPlaying) {
+    music.play().then(() => {
+      isMusicPlaying = true;
+    }).catch(() => {});
+  }
+
+  initCountdown();
+
+  AOS.init({
+    duration: 1000,
+    once: true,
+    offset: 80
+  });
+
+  loadSections();
+};
+
+
+window.addEventListener("blur", () => {
+  const music = document.getElementById("music");
+  if (music) music.pause();
+});
+
+window.addEventListener("focus", () => {
+  const music = document.getElementById("music");
+  if (music) music.play().catch(() => {});
+});
