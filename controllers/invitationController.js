@@ -58,21 +58,6 @@ window.openInvitation = async function () {
 };
 
 
-// async function loadSections() {
-//   const sections = ["couple", "event", "gift", "rsvp", "wishes", "closing"];
-
-//   for (const section of sections) {
-//     const res = await fetch(`views/${section}.html`);
-//     const html = await res.text();
-//     document.getElementById("invitation").innerHTML += html;
-//   }
-
-//   // ⏱ kasih waktu render DOM
-//   setTimeout(() => {
-//     AOS.refreshHard(); // 🔥 lebih kuat dari refresh biasa
-//   }, 100);
-// }
-
 async function loadSections() {
   const sections = ["couple", "event", "gift", "rsvp", "wishes", "closing"];
 
