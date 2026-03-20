@@ -1,24 +1,4 @@
-// window.openInvitation = async function () {
 
-//   const response = await fetch("views/countdown.html");
-//   const html = await response.text();
-
-//   document.getElementById("app").innerHTML = html;
-
-//   document.getElementById("music").play();
-
-//   initCountdown();
-
-//   // ✅ INIT AOS DULU
-//   AOS.init({
-//     duration: 1000,
-//     once: true,
-//     offset: 80
-//   });
-
-//   // ✅ WAJIB PAKAI AWAIT
-//   await loadSections();
-// };
 
 let cachedViews = {};
 
@@ -42,25 +22,31 @@ async function preloadViews() {
 // jalanin saat pertama buka web
 preloadViews();
 
+let isMusicPlaying = false;
+let isAutoPaused = false; // kontrol sistem
+
 window.openInvitation = async function () {
-  // ⚡ langsung render TANPA fetch lagi
   document.getElementById("app").innerHTML = cachedViews["countdown"];
 
-  // 🎵 play setelah UI muncul
-  document.getElementById("music").play();
+  const music = document.getElementById("music");
+
+  if (music && !isMusicPlaying) {
+    music.play().then(() => {
+      isMusicPlaying = true;
+    }).catch(() => {});
+  }
 
   initCountdown();
 
-  // ✅ init AOS SETELAH HTML ADA
   AOS.init({
     duration: 1000,
     once: true,
-    offset: 80,
+    offset: 80
   });
 
-  // ⚡ load section lain di background
   loadSections();
 };
+
 
 async function loadSections() {
   const sections = ["couple", "event", "gift", "rsvp", "wishes", "closing"];
@@ -122,50 +108,31 @@ window.addEventListener("load", () => {
 
 document.addEventListener("visibilitychange", () => {
   const music = document.getElementById("music");
-
   if (!music) return;
 
   if (document.hidden) {
-    // ❌ tab tidak aktif
     music.pause();
+    isAutoPaused = true;
   } else {
-    // ✅ balik ke tab
-    music.play().catch(() => {});
+    if (isAutoPaused) {
+      music.play().catch(() => {});
+      isAutoPaused = false;
+    }
   }
 });
 
 
-let isMusicPlaying = false;
-
-window.openInvitation = async function () {
-  document.getElementById("app").innerHTML = cachedViews["countdown"];
-
+function stopMusic() {
   const music = document.getElementById("music");
-
-  if (music && !isMusicPlaying) {
-    music.play().then(() => {
-      isMusicPlaying = true;
-    }).catch(() => {});
+  if (music) {
+    music.pause();
+    isAutoPaused = false;
   }
-
-  initCountdown();
-
-  AOS.init({
-    duration: 1000,
-    once: true,
-    offset: 80
-  });
-
-  loadSections();
-};
+}
 
 
-window.addEventListener("blur", () => {
-  const music = document.getElementById("music");
-  if (music) music.pause();
-});
-
-window.addEventListener("focus", () => {
-  const music = document.getElementById("music");
-  if (music) music.play().catch(() => {});
+document.addEventListener("click", (e) => {
+  if (e.target.tagName === "IFRAME") {
+    stopMusic();
+  }
 });
